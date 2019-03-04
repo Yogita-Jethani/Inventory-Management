@@ -1,0 +1,145 @@
+Computer shop inventory management
+FE/BE
+
+1.system requirements
+2.analysis(time,person,resources)(budget)
+3.design(OOMD)(ER Diagram,data flow diagram)
+4.Coding - implementation
+5.testing
+
+Barcode
+
+-products
+    -purchase(GST)
+-customers
+-suppliers
+-sale
+    -invoice(GST)
+-reports
+    -timely sales report
+    -purchase report
+    -P/L statement
+    -GST collection and set off reports monthly/quartely/time given by user!
+    
+* Validation!
+* no dates would be inserted by user at the time of purchase or sale
+
+SET OFF in GST!
+
+
+
+Database
+
+Suppliers
+    -supplier_id*
+    -supplier_name
+    -supplier-address
+    -supplier_contact
+    -supplier_email
+    -GST_No(unique)
+    
+Supplier_product(no primary key defined)
+    -supplier_id
+    -product_id(foreign)
+*there may be multiple suppliers for each product
+    
+Products
+    -product_id
+    -product_name
+    -category_id(foreign)(php)
+    -additional specifications
+    -HSN code
+    -Warranty(months)
+    
+Product_Sale_Rate
+    -product_id
+    -rate_of_sale(excluding GST)
+    -wef
+    
+GST
+    -id(auto inc)*
+    -GST ROI(rate of interest)
+    -HSN code*
+    -wef*
+    
+Category
+    -category_id
+    -category name(unique)
+
+Purchase
+    -purchase_id
+    -product_id
+    -supplier_id
+    -date_of_purchase
+    -rate_of_purchase
+    -GST Type(intra/inter)
+    -quatity_purchase
+    
+Inventory
+    -product_id*
+    -quantity
+    -EOQ level
+    
+Customers
+    -cust_id
+    -cust_name
+    -address
+    -contact
+    -email
+    -GST_No(unique)
+    
+Sales
+    -sale_id
+    -customer_id
+    -date_of_sale
+    -member_id
+    -paymode(cash/cheque/online/card)
+    -cheque_number(for cash no use,for online reference number/card number)
+    -cheque_date
+    -bank_name
+    
+    
+Invoice
+    -sale_id*
+    -product_id*
+    -quantity
+    -discount
+    -discount_description
+    
+Members(Employee)
+    -Member_id
+    -member_name
+    -member_email
+    -password
+    -member_type(Manager/Sales)
+    -phone
+    -address
+    
+
+
+GST type
+-0/Intrastate
+-1/Interstate
+    
+XBRL
+
+
+#Bill directly mail to customer
+#EOQ reached mail to supplier(just give dialog to select which supplier quantity to be inserted)
+#Show top 5 products
+#Show bottom 5 products
+#Downloading excel reports for GST
+#Make software change the GST rate
+
+
+
+Dashboard
+    -cards(4 cards)
+    -tables(product with less number of inventory quantity) Top 5+view all
+    -total collection made in the current month(have to give dropdown to select month view or quarter view or half yearly view or yearly view)
+    -top seller(done by u)
+    -top supplier(done by u)
+    
+
+FEATURE:    
+agar 4600 ka product hai aur humne usko 4300 main bech rahe hai toh aisa ek feature hona chaiye jaise password strength hota hai waise profit strength hai toh pata chale aur batana chaiye ke u are in loss toh pata chale (not dealing in tax,only purchase rate and sale rate)
