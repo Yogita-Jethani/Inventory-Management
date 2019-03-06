@@ -2,4 +2,4 @@
 
 PHP
 ### Login Page and Functionality
-![Screenshot]()
+![Screenshot](https://github.com/Yogita-Jethani/Inventory-Management/blob/master/loginand%20addcategory.gif)
